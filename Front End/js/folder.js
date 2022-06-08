@@ -61,6 +61,7 @@ function listFolders() {
       .then((folders) => {
         console.log(folders);
         folders.forEach((folder) => {
+          
           var create = document.getElementById("mainn");
 
           var createChild = document.createElement("div");
@@ -75,9 +76,9 @@ function listFolders() {
           let con = "";
 
           con +=
-            "<span onclick='openfile()' class='iconify' data-icon='bi:folder-fill' style='color: #3a86ff;' data-width='70'></span>";
+            `<span onclick='openfile(${folder.folderId})' class='iconify' data-icon='bi:folder-fill' style='color: #3a86ff;' data-width='70' ></span>`;
 
-          con += "<br/><p style='color:black'><b>";
+          con += "<br/><p style='color:  font-family: 'Lucida Console', 'Courier New', monospace font-size: 30px;'><b>";
 
           con += fold + "<b><p>";
 
@@ -86,9 +87,9 @@ function listFolders() {
           var div2 = document.createElement("span");
 
           let con2 = "";
-          con2 += `<span class='iconify' data-icon='ion:enter-outline' data-width='30' onclick='openfile(${folder.folderId})'>Open folder></span>&nbsp;`;
+          con2 += `<span class='iconify' data-icon='tabler:list-details' data-width='26' onclick='details(${folder.folderId},"${folder.folderName}", "${folder.createdBy}", "${folder.createdAt}")'></span>&nbsp;`;
 
-          con2 += `<span class='iconify' data-icon='fluent:delete-20-regular' data-width='30' onclick='deletefolder(${folder.folderId})'>Delete </span>`;
+          con2 += `<span class='iconify' data-icon='fluent:delete-20-regular' data-width='30' onclick='deletefolder(${folder.folderId})'></span>`;
 
           div2.classList.add("btn123");
 
@@ -104,7 +105,10 @@ function listFolders() {
   } catch (err) {
     console.log(err);
   }  
+  
 }
+
+
 function onLoad() {
   listFolders(); 
 }
@@ -115,6 +119,19 @@ function openfile(folderId) {
   sessionStorage.setItem("folderId", folderId);
   window.location.href = "file.html";
 }
+
+function details(folderId, folderName, foldercreatedby, foldercreatedat) {
+  alert(
+    
+      "Folder id: " + folderId + "\n" +
+      "Folder name: " +  folderName +  "\n" +
+      "Folder created by: " +  foldercreatedby + "\n" +
+      "Folder created at: " + foldercreatedat + "\n",
+     
+    
+  );
+}
+
 
 
 function deletefolder(folder) {
@@ -130,7 +147,7 @@ function deletefolder(folder) {
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
-  //location.reload();
+  location.reload();
 }
 
 
@@ -163,10 +180,13 @@ function searchFolder() {
 
             var createChild = document.createElement("div");
 
-            createChild.classList.add("abc2");
+            createChild.setAttribute("style", "display:inline-flex; flex-direction:column; justify-content: space-around;align-items: center; padding: 40px; margin-top: 10px;");
+
+            //createChild.classList.add("abc2");
             const fold = folder.folderName;
             
             var div1 = document.createElement("div");
+            
 
             // div1.classList.add("abc");
 
@@ -177,7 +197,7 @@ function searchFolder() {
 
             con += "<br/><p style='color:black'><b>";
 
-            con += fold + "<b><p>";
+            con += fold + "<b><p>";                    
 
             div1.innerHTML = con;
 
@@ -185,9 +205,9 @@ function searchFolder() {
 
             let con2 = "";
 
-            con2 += `<button  onclick='openfile(${folder.folderId})'>Open folder</button>&nbsp;`;
+            con2 += `<span class='iconify' data-icon='tabler:list-details' data-width='26' onclick='details(${folder.folderId})'>Open folder></span>&nbsp;`;
 
-            con2 += `<button onclick='deletefolder(${folder.folderId})' >Delete</button>`;
+            con2 += `<span class='iconify' data-icon='fluent:delete-20-regular' data-width='30' onclick='deletefolder(${folder.folderId})'>Delete </span>`;
             // div2.classList.add("btn123");
 
             div2.innerHTML = con2;
@@ -198,7 +218,7 @@ function searchFolder() {
             createChild.appendChild(div2);
 
             create.append(createChild);
-          });
+          }); ///style = "display:inline-flex; flex-direction:column; padding: 2px; margin-top: 50px;
         });
     }
   } catch (err) {
@@ -209,4 +229,8 @@ function searchFolder() {
 function logout() {
   sessionStorage.clear();
   window.location.href = "Sign_In.html";
+}
+
+function home() {
+  window.location.href = "Dashboard.html";
 }

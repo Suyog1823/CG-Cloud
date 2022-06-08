@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | CG Drive</title>
     <link rel="icon" type="image/x-icon" href="/Images/CG.ico">
-    <link rel="stylesheet" href="./CSS/Dashboard.css">
+    <link rel="stylesheet" href="./CSS/file.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -28,13 +28,11 @@
             <div class="add">
                 <button class="click">Upload / Create</button>
                 <div class="list">
-                    <button class="link" id="trigger">Create a Folder</button>
                     <button class="link" id="trigger1">Upload a File</button>
-                    <button class="link" id="trigger2">Upload a Folder</button>
                 </div>
             </div>
-            <!--This is for create folder-->
-            <div class="modal__wrapper">
+            <!-- This is for create folder-->
+             <div class="modal__wrapper">
                 <div class="modal__container">
 
                     <h2>Create a Folder</h2>
@@ -45,7 +43,7 @@
                         <button type="button" value="Create" class="submit" onclick="createFolder()">Create</button>
                     </form>
                 </div>
-            </div>
+            </div> 
 
             <div class="modal__wrapper" id="modal__wrapper1">
                 <div class="modal__container" id="modal__container1">
@@ -53,7 +51,7 @@
                     <h2>Upload a File</h2>
                     <hr><br>
                     <form action="">
-                        <!-- <label for="uploadFile">Upload a File</label><br> -->
+                        <label for="uploadFile">Upload a File</label><br>
                         <input type="file" class="choose" name="foldername" value=""><br><br>
                         <button type="submit" value="create" class="submit">Upload</button>
                         <button class="close" id="close1">&times;</button>
@@ -86,7 +84,7 @@
             
             <div class="links">
                 <ul>
-                    <li><span class="fa-solid fa-house"></span>&nbsp;&nbsp;<a href="">Home</a></li>
+                    <li><span class="fa-solid fa-house"></span>&nbsp;&nbsp;<a href="Dashboard.html">Home</a></li>
                     <li><span class="fa-solid fa-image"></span>&nbsp;&nbsp;<a href="">Photos</a></li>
                     <li><span class="fa-solid fa-film"></span>&nbsp;&nbsp;<a href="">Videos</a></li>
                     <li><span class="fa-solid fa-clock"></span>&nbsp;&nbsp;<a href="">Recents</a></li>
